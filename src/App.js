@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-import Timer from './Timer';
+import TimeSubmitter from './TimeSubmitter';
+import TimerDisplay from './TimerDisplay';
 
 class App extends Component {
   render() {
     return (
-      <Timer />
-    )
+      <div>
+        <TimeSubmitter />
+        <TimerDisplay />
+      </div>
+    );
   }
 }
 
