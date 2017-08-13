@@ -23,7 +23,13 @@ const convertHMStoMilliseconds = (hours, minutes, seconds) => {
 };
 
 const convertMillisecondsToHMS = milliseconds => {
+  const hours = Math.floor(milliseconds/1000/60/60);
+  const remainingMinsInMilliseconds = milliseconds % 3600000;
+  const remainingMinutes = remainingMinsInMilliseconds/1000/60;
+  const remainingSecondsInMilliseconds = remainingMinsInMilliseconds % 60000;
+  const remainingSeconds = remainingSecondsInMilliseconds/1000;
 
+  // console.log(hours, remainingMinutes, remainingSeconds);
 };
 
 const userInput = convertHMStoMilliseconds(1, 30, 900);
@@ -35,7 +41,7 @@ const counter = () => {
     console.log('timer done');
     clearInterval(timer);
   }
-  
+  convertMillisecondsToHMS(((startTime + userInput) - currentTime));
   document.title = ((startTime + userInput) - currentTime); // Math.ceil seems to work well, even when going into negatives
 };
 
