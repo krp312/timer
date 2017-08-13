@@ -12,6 +12,8 @@ const reducer = (state=initialState, action) => {
       seconds: action.seconds
     });
   }
+
+  return state;
 };
 
 export default reducer;

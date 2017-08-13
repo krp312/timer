@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateSubmittedTime } from '../actions';
+import { TimerDisplay } from './TimerDisplay';
 
 export class TimeSubmitter extends React.Component {
   updateTimes(event) {
@@ -16,6 +17,7 @@ export class TimeSubmitter extends React.Component {
           <input type="text" ref={input => this.seconds = input} />
           <input type="submit" value="submit" />
         </form>
+        <TimerDisplay />
       </div>
     );
   }

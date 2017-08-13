@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 export function TimerDisplay(props) {
   return (
     <div>
-      {props.seconds}
+      submission: {props.minutes} minutes, {props.seconds} seconds
     </div>
   );
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   minutes: state.minutes,
   seconds: state.seconds
 });
