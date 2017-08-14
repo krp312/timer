@@ -1,32 +1,24 @@
 // conversion functions
 
 const HMStoMilliseconds = (hours, minutes, seconds) => {
-  const hoursToMinutes = hours * 60;
-  const minutesToSeconds = (hoursToMinutes + minutes) * 60;
-  const milliseconds = (minutesToSeconds + seconds) * 1000;
+  const hoursToMinutes    = hours * 60;
+  const minutesToSeconds  = (hoursToMinutes + minutes) * 60;
+  const milliseconds      = (minutesToSeconds + seconds) * 1000;
   
   return milliseconds;
 };
 
 const millisecondsToHMS = milliseconds => {
-  // 1- Convert to seconds:
-  let seconds = milliseconds / 1000;
+  const normalizedSeconds = Math.ceil(milliseconds / 1000);
+  let hours   = parseInt(normalizedSeconds / 60 / 60, 10);
+  let minutes = parseInt((normalizedSeconds / 60) % 60, 10);
+  let seconds = Math.floor((normalizedSeconds) % 60);
 
-  // 2- Extract hours:
-  let hours = parseInt(seconds / 3600, 10); // 3,600 seconds in 1 hour
-  seconds = seconds % 3600; // seconds remaining after extracting hours
-
-  // 3- Extract minutes:
-  let minutes = parseInt(seconds / 60, 10); // 60 seconds in 1 minute
-
-  // 4- Keep only seconds not extracted to minutes:
-  seconds = Math.round(seconds % 60);
-
-  seconds = seconds < 10 ? '0' + seconds : seconds;
+  hours   = hours < 10 ? '0' + hours : hours;
   minutes = minutes < 10 ? '0' + minutes : minutes;
-  hours = hours < 10 ? '0' + hours : hours;
+  seconds = seconds < 10 ? '0' + seconds : seconds;
 
-  return `${hours}:${minutes}:${seconds}`;
+  return (`${hours}:${minutes}:${seconds}`);
 };
 
 // timer
@@ -46,7 +38,7 @@ const countdownTimer = (hours, minutes, seconds) => {
     }
   
     const milliseconds = startTime + userInput - currentTime;
-  
+    
     console.log(millisecondsToHMS(milliseconds));
   };
 
@@ -54,4 +46,4 @@ const countdownTimer = (hours, minutes, seconds) => {
   clock = setInterval(ticker, 1000);
 };
 
-countdownTimer(0,0,3);
+countdownTimer(0,1,1);
